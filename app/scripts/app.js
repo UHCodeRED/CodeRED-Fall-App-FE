@@ -52,7 +52,7 @@ angular
 })
 .factory('CodeREDServerURL', function(){
   var serverURL = 'http://fbexpresstest.azurewebsites.net/';
-  return serverURL + '/attendees/:attendeeId';
+  return serverURL + 'attendees/:attendeeId';
 });
 
 
