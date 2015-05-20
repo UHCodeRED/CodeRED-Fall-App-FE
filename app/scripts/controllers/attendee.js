@@ -29,6 +29,7 @@
     // Create new Attendee
     $scope.create = function() {
       // Create new Attendee object
+      $scope.attendee.transportation = $scope.attendee.transportation.trim();
       var attendee = new Attendees ($scope.attendee);
       console.log(attendee);
       // Redirect after save
