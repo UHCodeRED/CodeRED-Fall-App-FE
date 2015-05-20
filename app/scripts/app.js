@@ -49,4 +49,7 @@ angular
     // otherwise will take care of routing the user to the specified url
     $urlRouterProvider.otherwise('/attendees/create');
 
-});
+})
+.value('CodeREDServerURL', 'http://localhost:3000/attendees/:attendeeId');
+
+

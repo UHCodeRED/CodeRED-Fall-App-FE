@@ -63,15 +63,8 @@
               </label>
             </span>
           </div>
-
           <div class="form-group">
-            <label for="textArea" class="col-lg-2 control-label">References</label>
-            <div class="col-lg-10">
-              <textarea class="form-control" rows="3" id="textArea" ng-model="attendee.references" placeholder="Provide links to anything you can show us. Personal Websites, Past Projects, LinkedIn, etc. The more, the better."></textarea>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="transportation" class="col-lg-2 control-label">Transportation</label>
+            <label for="transportation" class="col-lg-2 control-label">Transportation*</label>
             <div class="col-lg-10">
               <label>We will not be providing travel reimbursement. Busses will be provided for high demand areas.</label>
               <select class="form-control" id="transportation" ng-model="attendee.transportation">
@@ -86,6 +79,14 @@
               </select>
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">References</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textArea" ng-model="attendee.references" placeholder="Provide links to anything you can show us. Personal Websites, Past Projects, LinkedIn, etc. The more, the better."></textarea>
+            </div>
+          </div>
+
           <div class="form-group">
             <div class="col-lg-8 col-lg-offset-2">
               <div class="checkbox text-left">
