@@ -8,10 +8,13 @@
  * Controller of the codeRedFrontEndApp
  */
 angular.module('codeRedFrontEndApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['$scope', '$location',
+  function($scope, $location) {
+
+    /**
+     * TODO
+     * delete when app does more than attendee signup
+     */
+    $location.path('createAttendee');
+  }
+]);
