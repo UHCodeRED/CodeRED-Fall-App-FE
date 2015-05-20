@@ -30,6 +30,15 @@ Install bower dependencies
 $ bower install
 ```
 
+##Setup
+go to `app/scripts/app.js` and update the `CodeREDServerURL` factory. Simply 
+update `serverURL` to the necessary URL.
+```
+  .factory('CodeREDServerURL', function(){
+    var serverURL = 'http://localhost:3000';
+    return serverURL + '/attendees/:attendeeId';
+  });
+```
 
 ## Build & development
 

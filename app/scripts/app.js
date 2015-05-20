@@ -50,6 +50,9 @@ angular
     $urlRouterProvider.otherwise('/attendees/create');
 
 })
-.value('CodeREDServerURL', 'http://localhost:3000/attendees/:attendeeId');
+.factory('CodeREDServerURL', function(){
+  var serverURL = 'http://localhost:3000';
+  return serverURL + '/attendees/:attendeeId';
+});
 
 
