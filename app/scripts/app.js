@@ -51,7 +51,7 @@ angular
 
 })
 .factory('CodeREDServerURL', function(){
-  var serverURL = 'http://fbexpresstest.azurewebsites.net/';
+  var serverURL = 'http://app.uhcode.red/';
   return serverURL + 'attendees/:attendeeId';
 });
 
