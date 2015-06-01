@@ -51,7 +51,7 @@ angular
 
 })
 .factory('CodeREDServerURL', function(){
-  var serverURL = 'http://app.uhcode.red/';
+  var serverURL = 'http://backend.uhcode.red/';
   return serverURL + 'attendees/:attendeeId';
 });
 
