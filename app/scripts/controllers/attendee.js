@@ -7,6 +7,7 @@
  * # AttendeeCtrl
  * Controller of the helloApp
  */
+
  angular.module('codeRedFrontEndApp').controller('AttendeeCtrl', ['$scope', '$stateParams', '$location', 'Attendees',
   function ($scope, $stateParams, $location, Attendees) {
 
@@ -36,8 +37,10 @@
       $scope.attendee.transportation = $scope.attendee.transportation.trim();
       var attendee = new Attendees ($scope.attendee);
       console.log(attendee);
+      var schoolIsValid = false;
+      for (var i = 0; i < $scope.schools.length; i++) if ($scope.schools[i] == $scope.attendee.school) schoolIsValid = true;
 
-      if ($scope.attendee.acceptedConduct) {
+      if ($scope.attendee.acceptedConduct && schoolIsValid) {
         // Redirect after save
         attendee.$save(function(response) {
           $location.path('attendees/' + response._id+'/thankYou');
@@ -48,7 +51,8 @@
           $scope.error = errorResponse.data.message;
         });
       } else { 
-        $scope.error = 'You must accept the MLH Code of Conduct apply for CodeRED';
+        if (!$scope.attendee.acceptedConduct) $scope.error = 'You must accept the MLH Code of Conduct apply for CodeRED';
+        else if(!schoolIsValid) $scope.error = 'Choose a valid school from the list or type Other';
       }
     };
 
