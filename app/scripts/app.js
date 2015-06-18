@@ -15,7 +15,7 @@ angular
     'ui.router',
     'ngResource',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch', 'ui.bootstrap'
   ])
   .config(['$stateProvider',
   function($stateProvider) {
