@@ -23,7 +23,8 @@
       transportation: '',
       firstHackathon: false,
       health_Medical_BioTech_Hack: false,
-      usingHardware: false
+      usingHardware: false,
+      acceptedConduct: false
     };
     $scope.attendee = newAttendee;
     // Create new Attendee
@@ -32,15 +33,18 @@
       $scope.attendee.transportation = $scope.attendee.transportation.trim();
       var attendee = new Attendees ($scope.attendee);
       console.log(attendee);
-      // Redirect after save
-      attendee.$save(function(response) {
-        $location.path('attendees/' + response._id+'/thankYou');
-        console.log(attendee);
-        // Clear form fields
-        $scope.attendee = newAttendee;
-      }, function(errorResponse) {
-        $scope.error = errorResponse.data.message;
-      });
+
+      if ($scope.attendee.acceptedConduct) {
+        // Redirect after save
+        attendee.$save(function(response) {
+          $location.path('attendees/' + response._id+'/thankYou');
+          console.log(attendee);
+          // Clear form fields
+          $scope.attendee = newAttendee;
+        }, function(errorResponse) {
+          $scope.error = errorResponse.data.message;
+        });
+      } else $scope.error = "You must accept the MLH Code of Conduct apply for CodeRED";
     };
 
     // Remove existing Attendee

@@ -90,19 +90,19 @@
             <div class="col-lg-8 col-lg-offset-2">
               <div class="checkbox text-left">
                 <label>
-                  <input type="checkbox" ng-model="attendee.firstHackathon" id="inputFirst"><span class="checkbox-material"><span class="check"></span></span> Is this your first hackathon?
+                  <input type="checkbox" ng-model="attendee.firstHackathon" ng-init="attendee.firstHackathon=false" id="inputFirst"><span class="checkbox-material"><span class="check"></span></span> Is this your first hackathon?
                 </label>
                 <br>
                 <label>
-                  <input type="checkbox" ng-model="attendee.health_Medical_BioTech_Hack" id="inputHealth"><span class="checkbox-material"><span class="check"></span></span> Do you plan on creating a health, medical, or biotech hack?
+                  <input type="checkbox" ng-model="attendee.health_Medical_BioTech_Hack" ng-init="attendee.health_Medical_BioTech_Hack=false" id="inputHealth"><span class="checkbox-material"><span class="check"></span></span> Do you plan on creating a health, medical, or biotech hack?
                 </label>
                 <br>
                 <label>
-                  <input type="checkbox" ng-model="attendee.usingHardware" id="inputHardware"><span class="checkbox-material"><span class="check"></span></span> Do you plan on hacking using hardware?
+                  <input type="checkbox" ng-model="attendee.usingHardware" ng-init="attendee.usingHardware=false" id="inputHardware"><span class="checkbox-material"><span class="check"></span></span> Do you plan on hacking using hardware?
                 </label>
-                <br>
+                <br><br>
                 <label>
-                  <input type="checkbox" id="inputConduct"><span class="checkbox-material"><span class="check"></span></span> I will at all times abide by and conform to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">Major League Hacking Code of Conduct</a> while at the event.
+                  <input type="checkbox" ng-model="attendee.acceptedConduct" ng-init="attendee.acceptedConduct=false" id="inputConduct" required><span class="checkbox-material"><span class="check"></span></span> I will at all times abide by and conform to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">Major League Hacking Code of Conduct</a> while at the event.
                 </label>
               </div>
             </div>
