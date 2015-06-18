@@ -31,6 +31,11 @@ angular
     //  url: '/attendees',
     //  templateUrl: 'modules/attendees/views/list-attendees.client.view.html'
     // }).
+    state('apply', {
+      url: '/apply',
+      templateUrl: 'views/attendees/create-attendee.html'
+    }).
+
     state('createAttendee', {
       url: '/attendees/create',
       templateUrl: 'views/attendees/create-attendee.html'
@@ -47,7 +52,8 @@ angular
 ]).config(function($urlRouterProvider){
     // if the path doesn't match any of the urls you configured
     // otherwise will take care of routing the user to the specified url
-    $urlRouterProvider.otherwise('/attendees/create');
+    // $urlRouterProvider.otherwise('/attendees/create');
+    $urlRouterProvider.otherwise('/apply');
 
 })
 .factory('CodeREDServerURL', function(){
