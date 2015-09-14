@@ -42,6 +42,14 @@ angular
     state('thankYou', {
       url: '/attendees/:attendeeId/thankYou',
       templateUrl: 'views/attendees/thankyou-attendee.html'
+    }).
+    state('seeYouThere', {
+      url: '/attendees/:attendeeId/seeYouThere',
+      templateUrl: 'views/attendees/seeYouThere-attendee.html'
+    }).
+    state('accepted', {
+      url: '/attendees/:attendeeId/accepted',
+      templateUrl: 'views/attendees/accepted-attendee.html'
     });
   }
 ]).config(function($urlRouterProvider){
@@ -51,6 +59,7 @@ angular
 
 })
 .factory('CodeREDServerURL', function(){
-  var serverURL = 'http://fbexpresstest.azurewebsites.net/';
+  // var serverURL = 'http://fbexpresstest.azurewebsites.net/';
+  var serverURL = 'http://localhost:3000/';
   return serverURL + 'attendees/:attendeeId';
 });
