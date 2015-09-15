@@ -15,7 +15,9 @@ angular
     'ui.router',
     'ngResource',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap',
+    'config'
   ])
   .config(['$stateProvider',
   function($stateProvider) {
@@ -58,8 +60,9 @@ angular
     $urlRouterProvider.otherwise('/attendees/create');
 
 })
-.factory('CodeREDServerURL', function(){
-  // var serverURL = 'http://fbexpresstest.azurewebsites.net/';
-  var serverURL = 'http://localhost:3000/';
-  return serverURL + 'attendees/:attendeeId';
+.factory('CodeREDServerURL', function(ENV){
+  if (ENV.name === 'development') {
+    console.log('serverURL:',ENV.apiEndpoint);
+  }
+  return ENV.apiEndpoint + 'attendees/:attendeeId';
 });

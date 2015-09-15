@@ -33,7 +33,6 @@ angular.module('codeRedFrontEndApp').controller('AcceptedCtrl', ['$scope', '$sta
             }
             // person.isComing = true;
             $scope.attendee = person;
-            console.log('CTRL Success:',person);
         }, function(err) {
             console.log('CTRL Error:',err);
             if (err.status !== 200) {

@@ -1,4 +1,4 @@
-<div id="createAttendee" class="shadow-z-3" data-ng-controller="AttendeeCtrl">
+<div id="createAttendee" data-ng-controller="AttendeeCtrl as ac">
   <div class="row">
     <div class="col-md-12">
       <div class="text-center">
@@ -29,7 +29,7 @@
           </div>
           <div class="form-group">
             <span class="input input--fumi" ng-class="{'input--filled':attendee.email}">
-              <input ng-model="attendee.email" class="input__field input__field--fumi" type="text" id="input-email" required>
+              <input ng-model="attendee.email" class="input__field input__field--fumi" type="email" id="input-email" required>
               <label class="input__label input__label--fumi" for="input-email">
                 <i class="fa fa-fw fa-envelope icon icon--fumi"></i>
                 <span class="input__label-content input__label-content--fumi">Email*</span>
@@ -37,11 +37,11 @@
             </span>
           </div>
           <div class="form-group">
-            <span class="input input--fumi" ng-class="{'input--filled':attendee.school}">
-              <input ng-model="attendee.school" class="input__field input__field--fumi" type="text" id="input-school" required>
+            <span class="input input--fumi" ng-class="{'input--filled':attendee.school}" >
+              <input ng-model="attendee.school" class="input__field input__field--fumi" type="text" id="input-school" typeahead-append-to-body="true" typeahead="state for state in schools | filter:$viewValue | limitTo:8" required>
               <label class="input__label input__label--fumi" for="input-school">
                 <i class="fa fa-fw fa-graduation-cap icon icon--fumi"></i>
-                <span class="input__label-content input__label-content--fumi">School*</span>
+                <span class="input__label-content input__label-content--fumi">School* (If not listed type Other)</span>
               </label>
             </span>
           </div>
@@ -50,7 +50,7 @@
               <input ng-model="attendee.links.resume" class="input__field input__field--fumi" type="text" id="input-resume">
               <label class="input__label input__label--fumi" for="input-resume">
                 <i class="fa fa-fw fa-file icon icon--fumi"></i>
-                <span class="input__label-content input__label-content--fumi">Link to Resume</span>
+                <span class="input__label-content input__label-content--fumi">Link to Resume (Recommended)</span>
               </label>
             </span>
           </div>
@@ -59,19 +59,19 @@
               <input ng-model="attendee.links.github" class="input__field input__field--fumi" type="text" id="input-github">
               <label class="input__label input__label--fumi" for="input-github">
                 <i class="fa fa-fw fa-github icon icon--fumi"></i>
-                <span class="input__label-content input__label-content--fumi">Link to Github</span>
+                <span class="input__label-content input__label-content--fumi">Link to Github (Recommended)</span>
               </label>
             </span>
           </div>
           <div class="form-group">
             <label for="transportation" class="col-lg-2 control-label">Transportation*</label>
             <div class="col-lg-10">
-              <label>We will not be providing travel reimbursement. Busses will be provided for high demand areas.</label>
+              <label>At this time will not be providing travel reimbursement. Busses will be provided for high demand areas.</label>
               <select class="form-control" id="transportation" ng-model="attendee.transportation">
                 <option>Driving</option>
                 <option>Riding with Friend</option>
                 <option>CodeRED Provided Bus</option>
-                <option>3rd Party Bus</option>
+                <option>3rd Party Bus (Greyhound, Megabus, etc.)</option>
                 <option>Flight</option>
                 <option>I live on/near campus</option>
                 <option>Other</option>
@@ -90,15 +90,19 @@
             <div class="col-lg-8 col-lg-offset-2">
               <div class="checkbox text-left">
                 <label>
-                  <input type="checkbox" ng-model="attendee.firstHackathon" id="inputFirst"><span class="checkbox-material"><span class="check"></span></span> Is this your first hackathon?
+                  <input type="checkbox" ng-model="attendee.firstHackathon" ng-init="attendee.firstHackathon=false" id="inputFirst"><span class="checkbox-material"><span class="check"></span></span> Is this your first hackathon?
                 </label>
                 <br>
                 <label>
-                  <input type="checkbox" ng-model="attendee.health_Medical_BioTech_Hack" id="inputHealth"><span class="checkbox-material"><span class="check"></span></span> Do you plan on creating a health, medical, or biotech hack?
+                  <input type="checkbox" ng-model="attendee.health_Medical_BioTech_Hack" ng-init="attendee.health_Medical_BioTech_Hack=false" id="inputHealth"><span class="checkbox-material"><span class="check"></span></span> Do you plan on creating a health, medical, or biotech hack?
                 </label>
                 <br>
                 <label>
-                  <input type="checkbox" ng-model="attendee.usingHardware" id="inputHardware"><span class="checkbox-material"><span class="check"></span></span> Do you plan on hacking using hardware?
+                  <input type="checkbox" ng-model="attendee.usingHardware" ng-init="attendee.usingHardware=false" id="inputHardware"><span class="checkbox-material"><span class="check"></span></span> Do you plan on hacking using hardware?
+                </label>
+                <br><br>
+                <label>
+                  <input type="checkbox" ng-model="attendee.acceptedConduct" ng-init="attendee.acceptedConduct=false" id="inputConduct" required><span class="checkbox-material"><span class="check"></span></span> I will at all times abide by and conform to the <a href="http://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">Major League Hacking Code of Conduct</a> while at the event.
                 </label>
               </div>
             </div>
@@ -109,11 +113,11 @@
             </div>
           </div>
           <div data-ng-show="error" class="text-danger">
-            <strong style="background-color:#eee" data-ng-bind="error"></strong>
+            <h3><strong style="background-color:#eee" data-ng-bind="error"></strong></h3>
           </div>
+          <p>We are sanctioned by and participate in, Major League Hacking (MLH). You authorize us to share certain application/registration information for event administration, ranking, MLH administration, and occasional messages about hackathons.</p>
         </fieldset>
       </form>
     </div>
   </div>
 </div>
-
