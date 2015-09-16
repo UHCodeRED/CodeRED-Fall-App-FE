@@ -7,8 +7,8 @@
  * # MainCtrl
  * Controller of the codeRedFrontEndApp
  */
-angular.module('codeRedFrontEndApp')
-  .controller('MainCtrl', ['$scope', '$location',
+
+angular.module('codeRedFrontEndApp').controller('MainCtrl', ['$scope', '$location',
   function($scope, $location) {
 
     /**

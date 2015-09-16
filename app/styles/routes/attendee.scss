@@ -25,9 +25,19 @@
     /* Fumi */
     .input--fumi {
       background: #fff;
-      overflow: hidden;
+      /*overflow: hidden;*/
       padding: 0.75em 0;
       max-width: 100%;
+    }
+
+    .dropdown-menu .ng-isolate-scope {
+      border-radius: none;
+      margin: 0.75em 0;
+      z-index: 9999;
+    }
+
+    #createAttendee .form-horizontal.attendeeForm .input--fumi {
+      overflow: visible !important;
     }
 
     .input--fumi::after {
