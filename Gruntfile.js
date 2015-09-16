@@ -24,6 +24,37 @@ module.exports = function (grunt) {
   // Define the configuration for all the tasks
   grunt.initConfig({
 
+    ngconstant: {
+      // Options for all targets
+      options: {
+        space: '  ',
+        wrap: '\'use strict\';\n\n {%= __ngModule %}',
+        name: 'config',
+      },
+      // Environment targets
+      development: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'development',
+            apiEndpoint: 'http://localhost:3000/'
+          }
+        }
+      },
+      production: {
+        options: {
+          dest: '<%= yeoman.app %>/scripts/config.js'
+        },
+        constants: {
+          ENV: {
+            name: 'production',
+            apiEndpoint: 'https://backend.uhcode.red/'
+          }
+        }
+      }
+    },
     // Project settings
     yeoman: appConfig,
 
@@ -429,6 +460,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:development', // ADD THIS
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
@@ -453,6 +485,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:production', // ADD THIS
     'wiredep',
     'useminPrepare',
     'concurrent:dist',

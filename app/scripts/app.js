@@ -15,7 +15,9 @@ angular
     'ui.router',
     'ngResource',
     'ngSanitize',
-    'ngTouch', 'ui.bootstrap'
+    'ngTouch',
+    'ui.bootstrap',
+    'config'
   ])
   .config(['$stateProvider',
   function($stateProvider) {
@@ -31,11 +33,6 @@ angular
     //  url: '/attendees',
     //  templateUrl: 'modules/attendees/views/list-attendees.client.view.html'
     // }).
-    state('apply', {
-      url: '/apply',
-      templateUrl: 'views/attendees/create-attendee.html'
-    }).
-
     state('createAttendee', {
       url: '/attendees/create',
       templateUrl: 'views/attendees/create-attendee.html'
@@ -47,18 +44,25 @@ angular
     state('thankYou', {
       url: '/attendees/:attendeeId/thankYou',
       templateUrl: 'views/attendees/thankyou-attendee.html'
+    }).
+    state('seeYouThere', {
+      url: '/attendees/:attendeeId/seeYouThere',
+      templateUrl: 'views/attendees/seeYouThere-attendee.html'
+    }).
+    state('accepted', {
+      url: '/attendees/:attendeeId/accepted',
+      templateUrl: 'views/attendees/accepted-attendee.html'
     });
   }
 ]).config(function($urlRouterProvider){
     // if the path doesn't match any of the urls you configured
     // otherwise will take care of routing the user to the specified url
-    // $urlRouterProvider.otherwise('/attendees/create');
-    $urlRouterProvider.otherwise('/apply');
+    $urlRouterProvider.otherwise('/attendees/create');
 
 })
-.factory('CodeREDServerURL', function(){
-  var serverURL = 'https://backend.uhcode.red/';
-  return serverURL + 'attendees/:attendeeId';
+.factory('CodeREDServerURL', function(ENV){
+  if (ENV.name === 'development') {
+    console.log('serverURL:',ENV.apiEndpoint);
+  }
+  return ENV.apiEndpoint + 'attendees/:attendeeId';
 });
-
-
