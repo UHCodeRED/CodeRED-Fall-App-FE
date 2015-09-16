@@ -1,4 +1,4 @@
-<section id="createAttendee" class="shadow-z-3" data-ng-controller="AcceptedCtrl" data-ng-init="findOne()">
+<section id="createAttendee" data-ng-controller="AcceptedCtrl" data-ng-init="findOne()">
     <div class="page-header text-center">
         <div class="row">
             <div class="col-xs-12">
@@ -33,65 +33,67 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-lg-6 col-lg-offset-3">
-                                    <h4><label>Shirt Size</label></h4>
-                                    <select class="form-control" id="transportation" ng-model="attendee.shirtSize">
-                                        <option>S</option>
-                                        <option>M</option>
-                                        <option>L</option>
-                                        <option>XL</option>
-                                        <option>2XL</option>
-                                        <option>3XL</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-lg-4 col-lg-offset-4">
-                                    <h4><label>Dietary Restrictions</label></h4>
-                                    <div class="checkbox row">
-                                        <div class="col-md-6" style="text-align: left">
-                                            <label>
-                                                <input type="checkbox" ng-model="attendee.dietaryRestrictions.Halal"><span class="checkbox-material"><span class="check"></span></span> Halal
-                                            </label>
-                                            <br>
-                                            <label>
-                                                <input type="checkbox" ng-model="attendee.dietaryRestrictions.Kosher"><span class="checkbox-material"><span class="check"></span></span> Kosher
-                                            </label>
-                                            <br>
-                                            <label>
-                                                <input type="checkbox" ng-model="attendee.dietaryRestrictions.Vegan"><span class="checkbox-material"><span class="check"></span></span> Vegan
-                                            </label>
-                                        </div>
-                                        <div class="col-md-6" style="text-align: left">
-                                            <label>
-                                                <input type="checkbox" ng-model="attendee.dietaryRestrictions.Vegetarian"><span class="checkbox-material"><span class="check"></span></span> Vegetarian
-                                            </label>
-                                            <br>
-                                            <label>
-                                                <input type="checkbox" ng-model="attendee.dietaryRestrictions.NoDairy"><span class="checkbox-material"><span class="check"></span></span> No dairy
-                                            </label>
-                                            <br>
-                                            <label>
-                                                <input type="checkbox" ng-model="attendee.dietaryRestrictions.NoPeanuts"><span class="checkbox-material"><span class="check"></span></span> No peanuts
-                                            </label>
-                                        </div>
-                                        <div class="col-md-12" style="text-align: left">
-                                            <label>
-                                                <input type="checkbox" ng-model="attendee.dietaryRestrictions.Other"><span class="checkbox-material"><span class="check"></span></span> Other (specify in comments)
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div data-ng-show='attendee.isComing'>
+                                                          <div class="form-group">
+                                  <div class="col-lg-6 col-lg-offset-3">
+                                      <h4><label>Shirt Size</label></h4>
+                                      <select class="form-control" id="transportation" ng-model="attendee.shirtSize">
+                                          <option>S</option>
+                                          <option>M</option>
+                                          <option>L</option>
+                                          <option>XL</option>
+                                          <option>2XL</option>
+                                          <option>3XL</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-lg-4 col-lg-offset-4">
+                                      <h4><label>Dietary Restrictions</label></h4>
+                                      <div class="checkbox row">
+                                          <div class="col-md-6" style="text-align: left">
+                                              <label>
+                                                  <input type="checkbox" ng-model="attendee.dietaryRestrictions.Halal"><span class="checkbox-material"><span class="check"></span></span> Halal
+                                              </label>
+                                              <br>
+                                              <label>
+                                                  <input type="checkbox" ng-model="attendee.dietaryRestrictions.Kosher"><span class="checkbox-material"><span class="check"></span></span> Kosher
+                                              </label>
+                                              <br>
+                                              <label>
+                                                  <input type="checkbox" ng-model="attendee.dietaryRestrictions.Vegan"><span class="checkbox-material"><span class="check"></span></span> Vegan
+                                              </label>
+                                          </div>
+                                          <div class="col-md-6" style="text-align: left">
+                                              <label>
+                                                  <input type="checkbox" ng-model="attendee.dietaryRestrictions.Vegetarian"><span class="checkbox-material"><span class="check"></span></span> Vegetarian
+                                              </label>
+                                              <br>
+                                              <label>
+                                                  <input type="checkbox" ng-model="attendee.dietaryRestrictions.NoDairy"><span class="checkbox-material"><span class="check"></span></span> No dairy
+                                              </label>
+                                              <br>
+                                              <label>
+                                                  <input type="checkbox" ng-model="attendee.dietaryRestrictions.NoPeanuts"><span class="checkbox-material"><span class="check"></span></span> No peanuts
+                                              </label>
+                                          </div>
+                                          <div class="col-md-12" style="text-align: left">
+                                              <label>
+                                                  <input type="checkbox" ng-model="attendee.dietaryRestrictions.Other"><span class="checkbox-material"><span class="check"></span></span> Other (specify in comments)
+                                              </label>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
 
-                            <br>
+                              <br>
 
-                            <div class="form-group">
-                                <div class="col-lg-6 col-lg-offset-3">
-                                    <h4><label>Comments</label></h4>
-                                    <textarea class="form-control" rows="3" id="textArea" ng-model="attendee.comments" placeholder="Anything else you feel we need to know?"></textarea>
-                                </div>
+                              <div class="form-group">
+                                  <div class="col-lg-6 col-lg-offset-3">
+                                      <h4><label>Comments</label></h4>
+                                      <textarea class="form-control" rows="3" id="textArea" ng-model="attendee.comments" placeholder="Anything else you feel we need to know?"></textarea>
+                                  </div>
+                              </div>
                             </div>
 
 
