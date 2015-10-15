@@ -2,6 +2,6 @@
 
  angular.module('config', [])
 
-.constant('ENV', {name:'production',apiEndpoint:'https://backend.uhcode.red/'})
+.constant('ENV', {name:'development',apiEndpoint:'http://localhost:3000/'})
 
 ;
