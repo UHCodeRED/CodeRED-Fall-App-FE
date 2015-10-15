@@ -1,8 +1,18 @@
 {
-    "folders":
-    [
-        {
-            "path": "."
-        }
-    ]
+  "folders":
+  [
+    {
+      "path": "./app",
+      "file_exclude_patterns":
+      [
+        // ".*",
+        // "*.js",
+      ],
+      "folder_exclude_patterns":
+      [
+        "node_modules",
+        // "data",
+      ]
+    }
+  ]
 }

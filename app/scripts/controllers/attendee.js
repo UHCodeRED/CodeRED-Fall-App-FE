@@ -112,11 +112,9 @@
 
     // Find existing Attendee
     $scope.findOne = function() {
-      console.log(Attendees.get({
-        attendeeId: $stateParams.attendeeId
-      }));
       $scope.attendee = Attendees.get({
         attendeeId: $stateParams.attendeeId
       });
+      console.log($scope.attendee);
     };
  }]);

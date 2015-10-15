@@ -1,0 +1,60 @@
+<section id="statusOfAttendee" data-ng-controller="statusController as ac" ng-init="init()">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center">
+        <h2>Status of my Application</h2>
+        <h4>Enter your email in the Following input.</h4>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <form name="statusForm" class="form-horizontal attendeeForm" novalidate>
+            <fieldset>
+              <div class="form-group">
+                <span class="input input--fumi" ng-class="{'input--filled':attendee.email}">
+                  <input ng-model="attendee.email" class="input__field input__field--fumi" type="email" id="input-email" required>
+                  <label class="input__label input__label--fumi" for="input-email">
+                    <i class="fa fa-fw fa-envelope icon icon--fumi"></i>
+                    <span class="input__label-content input__label-content--fumi">Email*</span>
+                  </label>
+                </span>
+              </div>
+
+              <div class="form-group">
+                <div class="col-lg-12">
+                  <button type="button" class="btn btn-primary btn-raised codeREDSubmitBtn" ng-disabled="!statusForm.$valid" ng-click="checkStatus()">{{ statusBtnTitle || 'Check Status' }}</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+      <div class="form-group" ng-show="statusResponse">
+            <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-3 col-md-offset-5">
+                <div class="checkbox text-left">
+                <label>
+                  <input type="checkbox" ng-model="attendee.isRegistered" ng-init="attendee.isRegistered=false" disabled><span class="checkbox-material"><span class="check"></span></span> Registered
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" ng-model="attendee.isAccepted" ng-init="attendee.isAccepted=false" disabled><span class="checkbox-material"><span class="check"></span></span> Been Accepted
+                </label>
+                <br>
+                <label>
+                  <input type="checkbox" ng-model="attendee.hasReservedSpot" ng-init="attendee.hasReservedSpot=false" disabled><span class="checkbox-material"><span class="check"></span></span> Reserved spot
+                </label>
+                <br>
+              </div>
+
+            </div>
+            <div class="col-xs-12">
+              <div data-ng-show="statusResponse" class="text-danger">
+            <h3><strong style="background-color:#eee;line-height: 1.4;" data-ng-bind="statusResponse"></strong></h3>
+          </div>
+            <a ng-show="showLinkToAcceptance" type="button" class="btn btn-primary btn-raised" ng-click="reserveSpot(attendee)">Reserve Spot</a>
+            </div>
+          </div>
+    </div>
+  </div>
+</section>
+
