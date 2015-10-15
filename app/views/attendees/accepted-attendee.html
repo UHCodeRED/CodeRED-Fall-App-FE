@@ -1,6 +1,17 @@
-<section id="createAttendee" data-ng-controller="AcceptedCtrl" data-ng-init="findOne()">
+<section id="createAttendee" data-ng-controller="AcceptedCtrl as ac" data-ng-init="findOne()">
+
+
     <div class="page-header text-center">
-        <div class="row">
+
+        <div class="row" ng-hide="validatedPremission">
+          <div class="col-xs-12" style="color:#777">
+              <h3>Looking for application...</h3>
+              <i class="fa fa-circle-o-notch fa-spin fa-5x"></i>
+            </div>
+        </div>
+
+        <div class="row" ng-show="validatedPremission">
+
             <div class="col-xs-12">
               <h1>Congratulations <span style="color:#c8102e" >{{attendee.firstName}}</span>! You've been <span style="color:#c8102e" >accepted</span> to</h1>
             </div>

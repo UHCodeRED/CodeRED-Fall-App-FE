@@ -52,6 +52,10 @@ angular
     state('accepted', {
       url: '/attendees/:attendeeId/accepted',
       templateUrl: 'views/attendees/accepted-attendee.html'
+    }).
+    state('status', {
+      url: '/attendees/status',
+      templateUrl: 'views/attendees/status.html'
     });
   }
 ]).config(function($urlRouterProvider){
