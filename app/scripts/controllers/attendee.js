@@ -32,6 +32,10 @@
     $scope.attendee = newAttendee;
     // Create new Attendee
     $scope.create = function() {
+      // Disable Submit button
+      $scope.submitBtnText = 'Submitting...';
+      $scope.formIsProcessing = true;
+
       // Create new Attendee object
       $scope.attendee.transportation = $scope.attendee.transportation.trim();
       var attendee = new Attendees ($scope.attendee);
@@ -46,13 +50,31 @@
           console.log(attendee);
           // Clear form fields
           $scope.attendee = newAttendee;
+
+          setTimeout(resetSubmitBtn, 1000);
+
         }, function(errorResponse) {
+          setTimeout(resetSubmitBtn, 500);
           $scope.error = errorResponse.data.message;
+
+
+
         });
       } else {
+
         if (!$scope.attendee.acceptedConduct) $scope.error = 'You must accept the MLH Code of Conduct apply for CodeRED'; // jshint ignore:line
         else if(!schoolIsValid) $scope.error = 'Choose a valid school from the list or type Other'; // jshint ignore:line
+
+        setTimeout(resetSubmitBtn, 500);
       }
+    };
+
+    var resetSubmitBtn = function() {
+        $scope.$apply(function(){
+          // Reset Submit Button
+          $scope.submitBtnText = 'Submit';
+          $scope.formIsProcessing = false;
+        });
     };
 
     // Remove existing Attendee
