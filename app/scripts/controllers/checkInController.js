@@ -5,7 +5,6 @@ angular.module('codeRedFrontEndApp').controller('checkInController',
   function($scope,$http,ENV,$location,$state,$stateParams,Attendees,$timeout){
 
   $scope.init = function() {
-    $scope.showCheckInButton = false;
     $scope.errorMessage = '';
     $scope.successMessage = '';
     $scope.attendee = {
@@ -35,6 +34,7 @@ angular.module('codeRedFrontEndApp').controller('checkInController',
         attendee.$update(function(response) {
             console.log('SUCCESS!!!');
             console.log(response);
+            $scope.showServerResponse = true;
             $scope.successMessage = attendee.firstName+' '+attendee.lastName+' is successfully checked in! :)';
             // refresh page after 1 section
             $timeout(function(){
@@ -43,18 +43,14 @@ angular.module('codeRedFrontEndApp').controller('checkInController',
             }, 1000);
 
         }, function(errorResponse) {
-         $scope.errorMessage = errorResponse.data.message;
+          $scope.showServerResponse = true;
+          $scope.errorMessage = errorResponse.data.message;
         });
-
-
     }, function(err) {
         console.log('CTRL Error:',err);
+        $scope.showServerResponse = true;
         $scope.errorMessage = err.data.message;
     });
-
-
-
-
   };
 
 
@@ -68,8 +64,8 @@ angular.module('codeRedFrontEndApp').controller('checkInController',
       method: 'GET',
       url: ENV.apiEndpoint+'attendees/email/'+$scope.attendee.email
     }).then(function successCallback(_attendee) {
-        $scope.showCheckInButton = true;
-
+        $scope.showServerResponse = true;
+        $scope.errorMessage = '';
         _attendee = _attendee.data;
 
         // set this temporary attendee to the controller attendee.
@@ -78,12 +74,8 @@ angular.module('codeRedFrontEndApp').controller('checkInController',
         $scope.statusBtnTitle = 'Find Attendee';
 
       }, function errorCallback(errorResponse) {
-        $scope.showCheckInButton = true;
-        // They don't exist in the database or something went wrong.
-        $scope.attendee.isRegistered = false;
-        $scope.attendee.isAccepted = false;
-        $scope.attendee.hasReservedSpot = false;
         $scope.statusBtnTitle = 'Find Attendee';
+        $scope.showServerResponse = true;
         $scope.errorMessage = errorResponse.data.message;
       });
   };
