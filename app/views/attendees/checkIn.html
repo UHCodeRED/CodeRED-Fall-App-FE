@@ -1,0 +1,53 @@
+<section id="statusOfAttendee" data-ng-controller="checkInController as cIc" ng-init="init()">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center">
+        <h2>Check In Attendee</h2>
+        <h4>Enter attendee email in the following input.</h4>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <form name="checkInForm" class="form-horizontal attendeeForm" novalidate>
+            <fieldset>
+              <div class="form-group">
+                <span class="input input--fumi" ng-class="{'input--filled':attendee.email}">
+                  <input ng-model="attendee.email" class="input__field input__field--fumi" type="email" id="input-email" required>
+                  <label class="input__label input__label--fumi" for="input-email">
+                    <i class="fa fa-fw fa-envelope icon icon--fumi"></i>
+                    <span class="input__label-content input__label-content--fumi">Email*</span>
+                  </label>
+                </span>
+              </div>
+
+              <div class="form-group">
+                <div class="col-lg-6">
+                  <button type="button" class="btn btn-primary btn-raised codeREDSubmitBtn" ng-disabled="!checkInForm.$valid" ng-click="findAttendee()">{{ statusBtnTitle || 'Find Attendee' }}</button>
+                </div>
+                <div class="col-lg-6">
+                  <button type="button" class="btn btn-primary btn-raised" ng-click="registerNewUser()">Register</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+
+      <div class="form-group" ng-show="showServerResponse">
+            <div class="col-xs-12" ng-show="!errorMessage">
+              <button type="button" class="btn btn-primary btn-raised checkInBtn" ng-disabled="!checkInForm.$valid" ng-click="checkIn(attendee)">{{ checkInTitle || 'Check In' }}</button>
+
+            </div>
+            <div class="col-xs-12">
+              <div data-ng-show="errorMessage" class="text-danger">
+                <h3><strong style="background-color:#eee;line-height: 1.4;" data-ng-bind="errorMessage"></strong></h3>
+              </div>
+
+              <div data-ng-show="successMessage" class="text-success">
+                <h3><strong style="background-color:#eee;line-height: 1.4;" data-ng-bind="successMessage"></strong></h3>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+</section>
+
