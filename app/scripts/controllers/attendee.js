@@ -22,11 +22,13 @@
         github: ''
       },
       references: '',
-      transportation: '',
+      transportation: 'Other',
+      signedUpOnLocation: true,
       firstHackathon: false,
       health_Medical_BioTech_Hack: false,
       usingHardware: false,
-      acceptedConduct: false
+      acceptedConduct: false,
+      checkedIn: true
     };
 
     $scope.attendee = newAttendee;

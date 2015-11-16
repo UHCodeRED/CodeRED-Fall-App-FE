@@ -56,6 +56,10 @@ angular
     state('status', {
       url: '/attendees/status',
       templateUrl: 'views/attendees/status.html'
+    }).
+    state('checkIn', {
+      url: '/attendees/checkIn/:organizerToken',
+      templateUrl: 'views/attendees/checkIn.html'
     });
   }
 ]).config(function($urlRouterProvider){
